@@ -167,7 +167,8 @@ public class AutoOpen : BaseSettingsPlugin<Settings>
                 if (Settings.UseMagicInput)
                 {
                     Mouse.LeftUp(0);
-                    GameController.PluginBridge.GetMethod<Action<Entity, uint>>("MagicInput.CastSkillWithTarget")(entity, 0x400);
+                    GameController.PluginBridge.GetMethod<Action<uint, uint, ushort>>("MagicInput.CastSkillWithTargetV2")(entity.Id, 0x400, 0x266);
+                    //GameController.PluginBridge.GetMethod<Action<Entity, uint>>("MagicInput.CastSkillWithTarget")(entity, 0x400);
                     Mouse.LeftDown(0);
                     _clickedEntities[entity.Address] = _clickedEntities.GetValueOrDefault(entity.Address) + 1;
                 }
