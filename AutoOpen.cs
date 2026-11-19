@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Threading;
-using System.Windows.Forms;
-using AutoOpen.Utils;
+﻿using AutoOpen.Utils;
 using ExileCore;
 using ExileCore.PoEMemory.Components;
 using ExileCore.PoEMemory.MemoryObjects;
 using ExileCore.Shared.Enums;
 using ExileCore.Shared.Helpers;
 using SharpDX;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Threading;
+using System.Windows.Forms;
 using Vector2 = System.Numerics.Vector2;
 
 namespace AutoOpen;
@@ -50,6 +50,7 @@ public class AutoOpen : BaseSettingsPlugin<Settings>
                              entity.Address != GameController.Player.Address &&
                              entity.IsValid &&
                              entity.IsTargetable &&
+                             !entity.HasComponent<Monster>() &&
                              (entity.HasComponent<TriggerableBlockage>() ||
                               entity.HasComponent<Transitionable>() ||
                               entity.HasComponent<Chest>() ||
